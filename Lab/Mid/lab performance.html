@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>personal portfolio</title>
+        <style>
+            body{
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 20px;
+                background-color: black;
+
+            }
+            button{
+                padding: 10px 20px;
+                margin: 10px;
+            }
+            .section{
+                display: none;
+                margin-top: 20px;
+            }
+            input,
+            textarea{
+                width: 200px;
+                padding: 10px;
+                margin: 5px;
+            }
+            .crror{
+                color: red;
+                font-size: 12px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 id="title">My portfolio</h1>
+        <h2 id="greting"></h2>
+        <button id="switchBtn"onclick="toggleMode()">SwitchMode</button>
+        <br><br>
+
+        <button onclick="showSection('about')">About</button>
+        <button onclick="showSection('project')">projects</button>
+        <button onclick="showSection('contact')">Contact</button>
+
+        <div id="about" class="section">
+            <h2>About Me</h2>
+            <p>I am a Computer Science student.</p>
+
+        </div>
+        <div id="project" class="section">
+            <h2>Projects</h2>
+            <p>portfolio</p>
+            <p>Library Management System</p>
+            </div>
+            <div id="contact" class="section">
+                <h2>Contact Forme</h2>
+                <input type="text" id="name" placeholder="Enter Name"><br>
+                <span id="nameError" class="crror"></span><br>
+                <input type="text" id="email" placeholder="Enter Email"><br>
+                <span id="emailError" class="crror"></span><br>
+                <textarea id="message" placeholder="Enter Message"></textarea><br>
+                <span id="messageError" class="crror"></span><br>
+                <button onclick="submitForm()">Submit</button>
+                </div>  
+                <script>
+                    function toggleMode()
+
+                    {
+                       var body=document.body;
+                       var title=document.getElementById("title");
+                       var button=document.getElementById("switchBtn");
+                       if(body.style.backgroundColor==="black")
+                       {
+                        body.style.backgroundColor="white";
+                        title.stly.color="black";
+                        title.innnerHTML="Light Mode";
+                        button.innerHTML="Switch to Dark Mode";
+                    }
+                    else
+                    {
+                        body.style.backgroundColor="black";
+                        title.style.color="white";
+                        title.innerHTML="Dark Mode";
+                        button.innerHTML="Switch to Light Mode";
+                    }
+                }
+                function greeting()
+                {
+                    var hour=new Date().getHours();
+                    var greetingText="";
+                    if(hour<12)
+                    {
+                        greetingText="Good Morning";
+                    }
+                    else if(hour<18)
+                    {
+                        greetingText="Good Afternoon";
+                    }
+                    else
+                    {
+                        greetingText="Good Evening";
+                    }
+                    document.getElementById("greting").innerHTML=greetingText;
+                }
+                greeting();
+
+                function showSection(section)
+                {
+                    document.getElementByID("about").style.display="none";
+                    document.getElementById("projects").style.display="none";
+                    document.getElementById("contact").style.display="none";
+                    document.getElementById(section).style.display="block";
+
+                }
+                showSection('about');
+                function validateForm()
+                {
+                    var name=document.getElementById("name").value;
+                    var email=document.getElementById("email").value;
+                    var message=document.getElementById("message").value;
+                    document.getElementById("nameError").innerHTML="";
+                    document.getElementById("emailError").innerHTML="";
+                    document.getElementById("messageError").innerHTML="";
+                    var emailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    var valid=true;
+                    if(name==="")
+                    {
+                        document.getElementById("nameError").innerHTML="Name is required";
+                        valid=false;
+                    }
+                    if(!email.match(emailpattern))
+                    {
+                        document.getElementById("emailError").innerHTML="Invalid Email ";
+                        
+
+                        valid=false;
+
+
+                    }
+        if(message length<10){
+            
+            document.getElementById("messageError").innerHTML="Message must be at least 10 characters";
+            at least 10 characters";
+            valid=false;
+
+        }
+
+                }
+
+                
+                    
+                </script>
+
+    </body>
+
+</html>
